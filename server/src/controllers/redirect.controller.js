@@ -11,7 +11,9 @@ const redirectToLongURL = async (req, res) => {
     if (urlMapping) {
       // Redirect the user to the long URL associated with the short code
       console.log(shortCode);
-      res.json({ longUrl: urlMapping.longUrl });
+      console.log(urlMapping.longUrl);
+      res.redirect(`${urlMapping.longUrl}`);
+      // res.json({ longUrl: urlMapping.longUrl });
     } else {
       // If no URLMapping document is found, return a 404 Not Found response
       res.status(404).json({ error: "Short URL not found" });
